@@ -1,1123 +1,2375 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Counterfeit Investigators — NZ Currency Lesson Plan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --black: #0f0f0f;
-      --green: #00a550;
-      --green-light: #e6f7ee;
-      --gold: #c9922a;
-      --text: #1a1a1a;
-      --muted: #666;
-      --border: #e0e0e0;
-      --white: #ffffff;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #f8f8f5;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* HEADER */
-    header {
-      background: var(--black);
-      color: var(--white);
-      padding: 3rem 2rem 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '$';
-      font-family: 'Syne', sans-serif;
-      font-size: 18rem;
-      font-weight: 800;
-      color: rgba(255,255,255,0.04);
-      position: absolute;
-      right: -2rem;
-      top: -3rem;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .header-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .badge {
-      display: inline-block;
-      background: var(--green);
-      color: white;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
-      border-radius: 2px;
-      margin-bottom: 1rem;
-    }
-
-    header h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 0.75rem;
-    }
-
-    header h1 span { color: var(--green); }
-
-    header p {
-      color: rgba(255,255,255,0.6);
-      max-width: 520px;
-      font-size: 1rem;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.85rem;
-    }
-
-    .meta-item strong { color: rgba(255,255,255,0.85); }
-
-    /* MAIN LAYOUT */
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2.5rem 2rem 4rem;
-      display: grid;
-      gap: 2rem;
-    }
-
-    /* SECTION CARD */
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-      background: #fafafa;
-    }
-
-    .card-header .icon {
-      font-size: 1.2rem;
-      width: 2rem;
-      text-align: center;
-    }
-
-    .card-header h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .card-body { padding: 1.5rem; }
-
-    /* LEARNING INTENTIONS */
-    .intentions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    @media (max-width: 560px) {
-      .intentions-grid { grid-template-columns: 1fr; }
-    }
-
-    .intention-box {
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-    }
-
-    .intention-box.green { background: var(--green-light); border-left: 3px solid var(--green); }
-    .intention-box.gold { background: #fdf6ec; border-left: 3px solid var(--gold); }
-
-    .intention-box h3 {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .intention-box ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .intention-box ul li {
-      font-size: 0.9rem;
-      padding: 0.25rem 0;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-
-    .intention-box ul li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--green);
-      font-size: 0.8rem;
-    }
-
-    .intention-box.gold ul li::before { color: var(--gold); }
-
-    /* HOOK SECTION */
-    .prompt-list {
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .prompt-item {
-      background: #f5f5f2;
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      font-size: 0.9rem;
-      font-style: italic;
-      border-left: 3px solid var(--black);
-    }
-
-    /* SECURITY FEATURES */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-    }
-
-    .feature-card {
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .feature-card .emoji {
-      font-size: 1.8rem;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-card ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-    }
-
-    .feature-card ul li {
-      font-size: 0.82rem;
-      color: var(--muted);
-      padding: 0.2rem 0;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    .feature-card ul li:first-child { border-top: none; }
-
-    /* TIMELINE */
-    .timeline { display: grid; gap: 0; }
-
-    .timeline-row {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 1rem;
-      align-items: start;
-      padding: 0.85rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .timeline-row:first-child { border-top: none; }
-
-    .time-badge {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--green);
-      padding-top: 0.1rem;
-      white-space: nowrap;
-    }
-
-    .timeline-content strong {
-      display: block;
-      font-size: 0.9rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .timeline-content p {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* SCENARIO CALLOUT */
-    .scenario-box {
-      background: var(--black);
-      color: var(--white);
-      border-radius: 6px;
-      padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .scenario-box::after {
-      content: '🔍';
-      font-size: 5rem;
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.15;
-    }
-
-    .scenario-box h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .scenario-box p {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
-      max-width: 500px;
-    }
-
-    /* RESOURCES */
-    .resource-list { display: grid; gap: 0.5rem; }
-
-    .resource-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1rem;
-      background: #f8f8f5;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.88rem;
-      transition: border-color 0.15s, background 0.15s;
-    }
-
-    .resource-link:hover {
-      border-color: var(--green);
-      background: var(--green-light);
-    }
-
-    .resource-link .link-icon {
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    /* EXTENSIONS */
-    .ext-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    @media (max-width: 560px) {
-      .ext-grid { grid-template-columns: 1fr; }
-    }
-
-    .ext-box {
-      background: #fafafa;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem;
-    }
-
-    .ext-box h3 {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .ext-box ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .ext-box ul li {
-      font-size: 0.88rem;
-      padding: 0.2rem 0;
-      color: var(--text);
-    }
-
-    /* LFT METHOD HIGHLIGHT */
-    .lft-strip {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .lft-pill {
-      flex: 1;
-      min-width: 120px;
-      text-align: center;
-      padding: 1rem;
-      border-radius: 6px;
-      border: 2px solid var(--border);
-    }
-
-    .lft-pill .big { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
-    .lft-pill strong { font-family: 'Syne', sans-serif; font-size: 0.95rem; display: block; }
-    .lft-pill span { font-size: 0.8rem; color: var(--muted); }
-
-    .lft-pill:nth-child(1) { border-color: #4a90d9; background: #f0f6ff; }
-    .lft-pill:nth-child(2) { border-color: var(--green); background: var(--green-light); }
-    .lft-pill:nth-child(3) { border-color: var(--gold); background: #fdf6ec; }
-
-    /* ARTICLE EMBED */
-    .article-embed {
-      border: 1px solid #d0d0d0;
-      border-radius: 6px;
-      overflow: hidden;
-      background: var(--white);
-    }
-    .article-masthead {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #1a1a2e;
-      padding: 0.6rem 1rem;
-    }
-    .article-source {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-    }
-    .article-link {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-    }
-    .article-link:hover { color: white; }
-    .article-headline {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 800;
-      line-height: 1.2;
-      padding: 1rem 1.1rem 0.25rem;
-      color: var(--text);
-    }
-    .article-byline {
-      font-size: 0.75rem;
-      color: var(--muted);
-      padding: 0 1.1rem 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .article-body {
-      padding: 0.85rem 1.1rem 1rem;
-      display: grid;
-      gap: 0.65rem;
-    }
-    .article-body p { font-size: 0.9rem; line-height: 1.65; }
-    .article-list {
-      padding-left: 1.25rem;
-      display: grid;
-      gap: 0.4rem;
-    }
-    .article-list li { font-size: 0.88rem; line-height: 1.55; }
-    .article-note {
-      background: #fff8e6;
-      border-left: 3px solid var(--gold);
-      padding: 0.6rem 0.85rem !important;
-      border-radius: 0 4px 4px 0;
-      font-size: 0.85rem !important;
-    }
-
-    /* DENOMINATION GRID */
-    .denom-grid {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .denom-card {
-      flex: 1;
-      min-width: 100px;
-      border-radius: 8px;
-      border: 2px solid var(--denom-color);
-      background: color-mix(in srgb, var(--denom-color) 8%, white);
-      padding: 0.85rem 0.75rem;
-      text-align: center;
-    }
-
-    .denom-value {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--denom-color);
-      line-height: 1;
-    }
-
-    .denom-bird {
-      font-size: 1.5rem;
-      margin: 0.4rem 0;
-    }
-
-    .denom-name {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.3;
-    }
-
-    .denom-name span {
-      font-weight: 400;
-      color: var(--muted);
-      font-size: 0.72rem;
-    }
-
-    .denom-person {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-      font-style: italic;
-    }
-
-    .denom-colour-label {
-      margin-top: 0.4rem;
-      font-size: 0.7rem;
-      color: var(--denom-color);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    /* HISTORY TIMELINE */
-    .history-timeline { display: grid; gap: 0; }
-
-    .history-item {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 1rem;
-      padding: 0.85rem 0;
-      border-top: 1px solid var(--border);
-      align-items: start;
-    }
-
-    .history-item:first-child { border-top: none; }
-
-    .history-year {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--green);
-      padding-top: 0.1rem;
-    }
-
-    .history-desc {
-      font-size: 0.88rem;
-      color: var(--text);
-    }
-
-    /* NEW EXTENSIONS */
-    .ext-grid-new {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    @media (max-width: 600px) {
-      .ext-grid-new { grid-template-columns: 1fr; }
-      .denom-grid { gap: 0.5rem; }
-      .denom-card { min-width: 80px; }
-    }
-
-    .ext-box-new {
-      background: #fafafa;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.1rem;
-      position: relative;
-    }
-
-    .ext-tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.55rem;
-      border-radius: 2px;
-      margin-bottom: 0.5rem;
-    }
-
-    .ext-tag.activity { background: #e6f7ee; color: var(--green); }
-    .ext-tag.discussion { background: #fdf6ec; color: var(--gold); }
-
-    .ext-box-new h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .ext-box-new p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .ext-box-new ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .ext-box-new ul li {
-      font-size: 0.83rem;
-      padding: 0.2rem 0 0.2rem 1rem;
-      position: relative;
-      border-top: 1px solid #efefef;
-    }
-
-    .ext-box-new ul li:first-child { border-top: none; }
-
-    .ext-box-new ul li::before {
-      content: '?';
-      position: absolute;
-      left: 0;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--muted);
-    }
-
-    .ext-link {
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    .ext-link:hover { text-decoration: underline; }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <div class="header-inner">
-    <div class="badge">Year 9 Financial Literacy</div>
-    <h1>Counterfeit<br><span>Investigators</span></h1>
-    <p>NZ notes and coins — security features and the Look–Feel–Tilt method</p>
-    <div class="meta-row">
-      <div class="meta-item">🕐 <strong>60 minutes</strong></div>
-      <div class="meta-item">👥 <strong>Year 9 (Ages 13–14)</strong></div>
-      <div class="meta-item">🏫 <strong>Commerce / Financial Literacy</strong></div>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <!-- LEARNING INTENTIONS & SUCCESS CRITERIA -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">🎯</span>
-      <h2>Learning Intentions & Success Criteria</h2>
-    </div>
-    <div class="card-body">
-      <div class="intentions-grid">
-        <div class="intention-box green">
-          <h3>By the end of this lesson, students will be able to…</h3>
-          <ul>
-            <li>Identify key features of NZ notes and coins</li>
-            <li>Explain how security features prevent counterfeiting</li>
-            <li>Apply the Look–Feel–Tilt method to detect fake notes</li>
-          </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Counterfeit Investigators — NZ Currency Lesson Plan</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --black: #0f0f0f;
+                --green: #00a550;
+                --green-light: #e6f7ee;
+                --gold: #c9922a;
+                --text: #1a1a1a;
+                --muted: #666;
+                --border: #e0e0e0;
+                --white: #ffffff;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "DM Sans", sans-serif;
+                background: #f8f8f5;
+                color: var(--text);
+                line-height: 1.6;
+            }
+
+            /* HEADER */
+            header {
+                background: var(--black);
+                color: var(--white);
+                padding: 3rem 2rem 2.5rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            @media (max-width: 600px) {
+                header {
+                    padding: 1.75rem 1.25rem 1.5rem;
+                }
+            }
+
+            header::before {
+                content: "$";
+                font-family: "Syne", sans-serif;
+                font-size: 18rem;
+                font-weight: 800;
+                color: rgba(255, 255, 255, 0.04);
+                position: absolute;
+                right: -2rem;
+                top: -3rem;
+                line-height: 1;
+                pointer-events: none;
+            }
+
+            .header-inner {
+                max-width: 860px;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .badge {
+                display: inline-block;
+                background: var(--green);
+                color: white;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding: 0.3rem 0.75rem;
+                border-radius: 2px;
+                margin-bottom: 1rem;
+            }
+
+            header h1 {
+                font-family: "Syne", sans-serif;
+                font-size: clamp(2rem, 5vw, 3.2rem);
+                font-weight: 800;
+                line-height: 1.1;
+                margin-bottom: 0.75rem;
+            }
+
+            header h1 span {
+                color: var(--green);
+            }
+
+            header p {
+                color: rgba(255, 255, 255, 0.6);
+                max-width: 520px;
+                font-size: 1rem;
+            }
+
+            .meta-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .meta-item {
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 0.85rem;
+            }
+
+            .meta-item strong {
+                color: rgba(255, 255, 255, 0.85);
+            }
+
+            /* MAIN LAYOUT */
+            main {
+                max-width: 860px;
+                margin: 0 auto;
+                padding: 2.5rem 2rem 4rem;
+                display: grid;
+                gap: 2rem;
+            }
+
+            @media (max-width: 600px) {
+                main {
+                    padding: 1.5rem 1rem 3rem;
+                    gap: 1.25rem;
+                }
+            }
+
+            /* SECTION CARD */
+            .card {
+                background: var(--white);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .card-header {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--border);
+                background: #fafafa;
+            }
+
+            .card-header .icon {
+                font-size: 1.2rem;
+                width: 2rem;
+                text-align: center;
+            }
+
+            .card-header h2 {
+                font-family: "Syne", sans-serif;
+                font-size: 1rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            /* LEARNING INTENTIONS */
+            .intentions-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            @media (max-width: 560px) {
+                .intentions-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .intention-box {
+                border-radius: 6px;
+                padding: 1rem 1.25rem;
+            }
+
+            .intention-box.green {
+                background: var(--green-light);
+                border-left: 3px solid var(--green);
+            }
+            .intention-box.gold {
+                background: #fdf6ec;
+                border-left: 3px solid var(--gold);
+            }
+
+            .intention-box h3 {
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.5rem;
+            }
+
+            .intention-box ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .intention-box ul li {
+                font-size: 0.9rem;
+                padding: 0.25rem 0;
+                padding-left: 1.2rem;
+                position: relative;
+            }
+
+            .intention-box ul li::before {
+                content: "→";
+                position: absolute;
+                left: 0;
+                color: var(--green);
+                font-size: 0.8rem;
+            }
+
+            .intention-box.gold ul li::before {
+                color: var(--gold);
+            }
+
+            /* HOOK SECTION */
+            .prompt-list {
+                display: grid;
+                gap: 0.5rem;
+            }
+
+            .prompt-item {
+                background: #f5f5f2;
+                border-radius: 6px;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+                font-style: italic;
+                border-left: 3px solid var(--black);
+            }
+
+            /* SECURITY FEATURES */
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1rem;
+            }
+
+            .feature-card {
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .feature-card .emoji {
+                font-size: 1.8rem;
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+            .feature-card h3 {
+                font-family: "Syne", sans-serif;
+                font-size: 0.85rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                margin-bottom: 0.5rem;
+            }
+
+            .feature-card ul {
+                list-style: none;
+                padding: 0;
+                text-align: left;
+            }
+
+            .feature-card ul li {
+                font-size: 0.82rem;
+                color: var(--muted);
+                padding: 0.2rem 0;
+                border-top: 1px solid #f0f0f0;
+            }
+
+            .feature-card ul li:first-child {
+                border-top: none;
+            }
+
+            /* TIMELINE */
+            .timeline {
+                display: grid;
+                gap: 0;
+            }
+
+            .timeline-row {
+                display: grid;
+                grid-template-columns: 90px 1fr;
+                gap: 1rem;
+                align-items: start;
+                padding: 0.85rem 0;
+                border-top: 1px solid var(--border);
+            }
+
+            .timeline-row:first-child {
+                border-top: none;
+            }
+
+            .time-badge {
+                font-family: "Syne", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: var(--green);
+                padding-top: 0.1rem;
+                white-space: nowrap;
+            }
+
+            .timeline-content strong {
+                display: block;
+                font-size: 0.9rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .timeline-content p {
+                font-size: 0.82rem;
+                color: var(--muted);
+            }
+
+            /* SCENARIO CALLOUT */
+            .scenario-box {
+                background: var(--black);
+                color: var(--white);
+                border-radius: 6px;
+                padding: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .scenario-box::after {
+                content: "🔍";
+                font-size: 5rem;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                opacity: 0.15;
+            }
+
+            .scenario-box h3 {
+                font-family: "Syne", sans-serif;
+                font-weight: 700;
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .scenario-box p {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.9rem;
+                max-width: 500px;
+            }
+
+            /* RESOURCES */
+            .resource-list {
+                display: grid;
+                gap: 0.5rem;
+            }
+
+            .resource-link {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.75rem 1rem;
+                background: #f8f8f5;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                text-decoration: none;
+                color: var(--text);
+                font-size: 0.88rem;
+                transition:
+                    border-color 0.15s,
+                    background 0.15s;
+            }
+
+            .resource-link:hover {
+                border-color: var(--green);
+                background: var(--green-light);
+            }
+
+            .resource-link .link-icon {
+                font-size: 1rem;
+                flex-shrink: 0;
+            }
+
+            /* EXTENSIONS */
+            .ext-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            @media (max-width: 560px) {
+                .ext-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .ext-box {
+                background: #fafafa;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                padding: 1rem;
+            }
+
+            .ext-box h3 {
+                font-size: 0.8rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--muted);
+                margin-bottom: 0.5rem;
+            }
+
+            .ext-box ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .ext-box ul li {
+                font-size: 0.88rem;
+                padding: 0.2rem 0;
+                color: var(--text);
+            }
+
+            /* LFT METHOD HIGHLIGHT */
+            .lft-strip {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .lft-pill {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+                padding: 1rem;
+                border-radius: 6px;
+                border: 2px solid var(--border);
+            }
+
+            .lft-pill .big {
+                font-size: 1.6rem;
+                display: block;
+                margin-bottom: 0.3rem;
+            }
+            .lft-pill strong {
+                font-family: "Syne", sans-serif;
+                font-size: 0.95rem;
+                display: block;
+            }
+            .lft-pill span {
+                font-size: 0.8rem;
+                color: var(--muted);
+            }
+
+            .lft-pill:nth-child(1) {
+                border-color: #4a90d9;
+                background: #f0f6ff;
+            }
+            .lft-pill:nth-child(2) {
+                border-color: var(--green);
+                background: var(--green-light);
+            }
+            .lft-pill:nth-child(3) {
+                border-color: var(--gold);
+                background: #fdf6ec;
+            }
+
+            /* DENOMINATION SIZE BARS */
+            .size-comparison {
+                margin-bottom: 1.5rem;
+            }
+
+            .size-comparison-label {
+                font-family: "Syne", sans-serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.75rem;
+            }
+
+            .size-row {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .size-row-label {
+                font-family: "Syne", sans-serif;
+                font-size: 0.75rem;
+                font-weight: 700;
+                width: 2.2rem;
+                flex-shrink: 0;
+                color: var(--denom-color);
+            }
+
+            .size-bar-track {
+                flex: 1;
+                background: #f0f0ee;
+                border-radius: 3px;
+                height: 18px;
+                position: relative;
+            }
+
+            .size-bar-fill {
+                height: 100%;
+                border-radius: 3px;
+                background: var(--denom-color);
+                opacity: 0.75;
+                display: flex;
+                align-items: center;
+                padding-left: 0.5rem;
+            }
+
+            .size-bar-text {
+                font-size: 0.68rem;
+                font-weight: 600;
+                color: white;
+                white-space: nowrap;
+            }
+
+            /* PERSON BIO */
+            .denom-bio {
+                font-size: 0.72rem;
+                color: var(--muted);
+                margin-top: 0.35rem;
+                line-height: 1.4;
+                border-top: 1px solid #efefef;
+                padding-top: 0.35rem;
+            }
+
+            .denom-size {
+                font-size: 0.68rem;
+                color: var(--muted);
+                margin-top: 0.25rem;
+                font-family: "Syne", sans-serif;
+                letter-spacing: 0.03em;
+            }
+
+            .denom-source {
+                font-size: 0.75rem;
+                color: var(--muted);
+                margin-top: 0.85rem;
+                padding-top: 0.75rem;
+                border-top: 1px solid var(--border);
+            }
+
+            .denom-source a {
+                color: var(--green);
+                text-decoration: none;
+            }
+
+            .denom-source a:hover {
+                text-decoration: underline;
+            }
+
+            /* LIGHTBOX MODAL */
+            .lightbox-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.85);
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+                cursor: zoom-out;
+            }
+
+            .lightbox-overlay.active {
+                display: flex;
+            }
+
+            .lightbox-img {
+                max-width: 90vw;
+                max-height: 90vh;
+                width: auto;
+                height: auto;
+                border-radius: 6px;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+                cursor: default;
+            }
+
+            .lightbox-close {
+                position: fixed;
+                top: 1.25rem;
+                right: 1.5rem;
+                color: white;
+                font-size: 1.8rem;
+                line-height: 1;
+                cursor: pointer;
+                opacity: 0.7;
+                background: none;
+                border: none;
+                padding: 0;
+                font-family: sans-serif;
+            }
+
+            .lightbox-close:hover {
+                opacity: 1;
+            }
+
+            .lightbox-caption {
+                position: fixed;
+                bottom: 1.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                color: rgba(255, 255, 255, 0.65);
+                font-size: 0.8rem;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                font-family: "Syne", sans-serif;
+                font-weight: 700;
+                white-space: nowrap;
+            }
+
+            /* INVESTIGATION IMAGES */
+            .evidence-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .evidence-card {
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                overflow: hidden;
+            }
+
+            .evidence-label {
+                font-family: "Syne", sans-serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--muted);
+                padding: 0.5rem 0.75rem;
+                background: #fafafa;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .evidence-card img {
+                display: block;
+                width: 100%;
+                height: auto;
+                cursor: zoom-in;
+                transition: opacity 0.15s;
+            }
+
+            .evidence-card img:hover {
+                opacity: 0.85;
+            }
+
+            .reference-img img {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+            }
+
+            .invest-instructions {
+                display: grid;
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .invest-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                background: #f5f5f2;
+                border-radius: 6px;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .invest-num {
+                font-family: "Syne", sans-serif;
+                font-size: 0.8rem;
+                font-weight: 800;
+                color: white;
+                background: var(--black);
+                border-radius: 50%;
+                width: 1.4rem;
+                height: 1.4rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .answers-reveal summary {
+                cursor: pointer;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: var(--muted);
+                padding: 0.5rem 0;
+                user-select: none;
+            }
+
+            .answers-reveal summary:hover {
+                color: var(--text);
+            }
+
+            .timeline-row.highlight {
+                background: var(--green-light);
+                border-radius: 6px;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                border-top: none;
+                margin-bottom: 2px;
+            }
+
+            .timeline-row.highlight .time-badge {
+                color: #007a3d;
+            }
+
+            .timeline-row.highlight + .timeline-row {
+                border-top: none;
+            }
+
+            /* PRIOR KNOWLEDGE */
+            .prior-grid {
+                display: grid;
+                gap: 0.5rem;
+            }
+
+            .prior-item {
+                background: #f5f5f2;
+                border-radius: 6px;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+                font-style: italic;
+                border-left: 3px solid var(--green);
+            }
+
+            /* KARAKIA */
+            .karakia-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            @media (max-width: 600px) {
+                .karakia-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .karakia-text {
+                font-style: italic;
+                font-size: 0.95rem;
+                line-height: 2;
+                color: var(--text);
+                border-left: 3px solid var(--green);
+                padding-left: 1rem;
+            }
+
+            .karakia-meaning {
+                background: var(--green-light);
+                border-radius: 6px;
+                padding: 1rem 1.25rem;
+                font-size: 0.88rem;
+                color: var(--text);
+                line-height: 1.7;
+            }
+
+            .karakia-meaning h3 {
+                font-family: "Syne", sans-serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--green);
+                margin-bottom: 0.5rem;
+            }
+
+            .whakatuki-box {
+                margin-top: 1.25rem;
+                background: #fafafa;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                padding: 1rem 1.25rem;
+            }
+
+            .whakatuki-box .label {
+                font-size: 0.68rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.35rem;
+            }
+
+            .whakatuki-box .quote {
+                font-style: italic;
+                font-size: 0.95rem;
+                color: var(--text);
+                margin-bottom: 0.35rem;
+            }
+
+            .whakatuki-box .translation {
+                font-size: 0.85rem;
+                color: var(--muted);
+            }
+
+            /* ARTICLE EMBED */
+            .article-embed {
+                border: 1px solid #d0d0d0;
+                border-radius: 6px;
+                overflow: hidden;
+                background: var(--white);
+            }
+            .article-masthead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #1a1a2e;
+                padding: 0.6rem 1rem;
+            }
+            .article-source {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.7);
+            }
+            .article-link {
+                font-size: 0.72rem;
+                color: rgba(255, 255, 255, 0.5);
+                text-decoration: none;
+            }
+            .article-link:hover {
+                color: white;
+            }
+            .article-headline {
+                font-family: "Syne", sans-serif;
+                font-size: 1.15rem;
+                font-weight: 800;
+                line-height: 1.2;
+                padding: 1rem 1.1rem 0.25rem;
+                color: var(--text);
+            }
+            .article-byline {
+                font-size: 0.75rem;
+                color: var(--muted);
+                padding: 0 1.1rem 0.75rem;
+                border-bottom: 1px solid var(--border);
+            }
+            .article-body {
+                padding: 0.85rem 1.1rem 1rem;
+                display: grid;
+                gap: 0.65rem;
+            }
+            .article-body p {
+                font-size: 0.9rem;
+                line-height: 1.65;
+            }
+            .article-list {
+                padding-left: 1.25rem;
+                display: grid;
+                gap: 0.4rem;
+            }
+            .article-list li {
+                font-size: 0.88rem;
+                line-height: 1.55;
+            }
+            .article-note {
+                background: #fff8e6;
+                border-left: 3px solid var(--gold);
+                padding: 0.6rem 0.85rem !important;
+                border-radius: 0 4px 4px 0;
+                font-size: 0.85rem !important;
+            }
+
+            /* DENOMINATION GRID */
+            .denom-grid {
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+            }
+
+            .denom-card {
+                flex: 1;
+                min-width: 100px;
+                border-radius: 8px;
+                border: 2px solid var(--denom-color);
+                background: color-mix(in srgb, var(--denom-color) 8%, white);
+                padding: 0.85rem 0.75rem;
+                text-align: center;
+            }
+
+            .denom-value {
+                font-family: "Syne", sans-serif;
+                font-size: 1.3rem;
+                font-weight: 800;
+                color: var(--denom-color);
+                line-height: 1;
+            }
+
+            .denom-bird {
+                font-size: 1.5rem;
+                margin: 0.4rem 0;
+            }
+
+            .denom-name {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: var(--text);
+                line-height: 1.3;
+            }
+
+            .denom-name span {
+                font-weight: 400;
+                color: var(--muted);
+                font-size: 0.72rem;
+            }
+
+            .denom-person {
+                font-size: 0.72rem;
+                color: var(--muted);
+                margin-top: 0.2rem;
+                font-style: italic;
+            }
+
+            .denom-colour-label {
+                margin-top: 0.4rem;
+                font-size: 0.7rem;
+                color: var(--denom-color);
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+
+            /* HISTORY TIMELINE */
+            .history-timeline {
+                display: grid;
+                gap: 0;
+            }
+
+            .history-item {
+                display: grid;
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+                padding: 0.85rem 0;
+                border-top: 1px solid var(--border);
+                align-items: start;
+            }
+
+            .history-item:first-child {
+                border-top: none;
+            }
+
+            .history-year {
+                font-family: "Syne", sans-serif;
+                font-size: 0.78rem;
+                font-weight: 700;
+                color: var(--green);
+                padding-top: 0.1rem;
+            }
+
+            .history-desc {
+                font-size: 0.88rem;
+                color: var(--text);
+            }
+
+            /* NEW EXTENSIONS */
+            .ext-grid-new {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            @media (max-width: 600px) {
+                .ext-grid-new {
+                    grid-template-columns: 1fr;
+                }
+                .denom-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 0.5rem;
+                }
+                .denom-card {
+                    min-width: 0;
+                }
+                .size-bar-text {
+                    display: none;
+                }
+                .size-row-label {
+                    width: 2rem;
+                }
+            }
+
+            @media (max-width: 380px) {
+                .denom-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .ext-box-new {
+                background: #fafafa;
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                padding: 1rem 1.1rem;
+                position: relative;
+            }
+
+            .ext-tag {
+                display: inline-block;
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.2rem 0.55rem;
+                border-radius: 2px;
+                margin-bottom: 0.5rem;
+            }
+
+            .ext-tag.activity {
+                background: #e6f7ee;
+                color: var(--green);
+            }
+            .ext-tag.discussion {
+                background: #fdf6ec;
+                color: var(--gold);
+            }
+
+            .ext-box-new h3 {
+                font-family: "Syne", sans-serif;
+                font-size: 0.9rem;
+                font-weight: 700;
+                margin-bottom: 0.4rem;
+            }
+
+            .ext-box-new p {
+                font-size: 0.85rem;
+                color: var(--muted);
+                margin-bottom: 0.5rem;
+            }
+
+            .ext-box-new ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .ext-box-new ul li {
+                font-size: 0.83rem;
+                padding: 0.2rem 0 0.2rem 1rem;
+                position: relative;
+                border-top: 1px solid #efefef;
+            }
+
+            .ext-box-new ul li:first-child {
+                border-top: none;
+            }
+
+            .ext-box-new ul li::before {
+                content: "?";
+                position: absolute;
+                left: 0;
+                font-size: 0.7rem;
+                font-weight: 700;
+                color: var(--muted);
+            }
+
+            .ext-link {
+                display: inline-block;
+                margin-top: 0.5rem;
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: var(--green);
+                text-decoration: none;
+            }
+
+            .ext-link:hover {
+                text-decoration: underline;
+            }
+
+            footer {
+                text-align: center;
+                padding: 2rem;
+                font-size: 0.8rem;
+                color: var(--muted);
+                border-top: 1px solid var(--border);
+            }
+
+            /* FLOATING TOC */
+            .toc {
+                display: none;
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                left: max(1rem, calc(50vw - 430px - 192px));
+                width: 168px;
+                background: var(--white);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.85rem 1rem;
+                z-index: 100;
+            }
+
+            @media (min-width: 1240px) {
+                .toc {
+                    display: block;
+                }
+            }
+
+            .toc-title {
+                font-family: "Syne", sans-serif;
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.6rem;
+            }
+
+            .toc ul {
+                list-style: none;
+                padding: 0;
+                display: grid;
+                gap: 0.1rem;
+            }
+
+            .toc-link {
+                display: block;
+                font-size: 0.78rem;
+                color: var(--muted);
+                text-decoration: none;
+                padding: 0.3rem 0.5rem;
+                border-radius: 4px;
+                border-left: 2px solid transparent;
+                line-height: 1.3;
+                transition:
+                    color 0.15s,
+                    background 0.15s,
+                    border-color 0.15s;
+            }
+
+            .toc-link:hover {
+                color: var(--text);
+                background: #f5f5f2;
+            }
+
+            .toc-link.active {
+                color: var(--green);
+                border-left-color: var(--green);
+                background: var(--green-light);
+                font-weight: 500;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="header-inner">
+                <div class="badge">Year 9/10 Business Studies</div>
+                <h1>Counterfeit<br /><span>Investigators</span></h1>
+                <p>
+                    NZ notes - security features and the Look–Feel–Tilt method
+                </p>
+                <div class="meta-row">
+                    <div class="meta-item">🕐 <strong>60 minutes</strong></div>
+                    <div class="meta-item">
+                        👥 <strong>Year 9 (Ages 13–14)</strong>
+                    </div>
+                    <div class="meta-item">
+                        🏫 <strong>Commerce / Financial Literacy</strong>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="toc" id="toc" aria-label="Table of contents">
+            <div class="toc-title">On this page</div>
+            <ul>
+                <li><a href="#karakia" class="toc-link">Karakia</a></li>
+                <li>
+                    <a href="#learning" class="toc-link">Learning Intentions</a>
+                </li>
+                <li><a href="#prior" class="toc-link">What Do You Know?</a></li>
+                <li><a href="#notes" class="toc-link">NZ Banknotes</a></li>
+                <li>
+                    <a href="#article" class="toc-link">Article & Discussion</a>
+                </li>
+                <li><a href="#lft" class="toc-link">Look–Feel–Tilt</a></li>
+                <li>
+                    <a href="#investigation" class="toc-link">Investigation</a>
+                </li>
+                <li><a href="#history" class="toc-link">History</a></li>
+                <li>
+                    <a href="#timeline" class="toc-link">Lesson Timeline</a>
+                </li>
+                <li><a href="#extensions" class="toc-link">Extensions</a></li>
+                <li><a href="#resources" class="toc-link">Resources</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- KARAKIA / OPENING -->
+            <div class="card" id="karakia">
+                <div class="card-header">
+                    <span class="icon">🌿</span>
+                    <h2>Opening — Karakia & Whakataukī</h2>
+                </div>
+                <div class="card-body">
+                    <p
+                        style="
+                            font-size: 0.85rem;
+                            color: var(--muted);
+                            margin-bottom: 1.25rem;
+                        "
+                    >
+                        Join in if you know this karakia — E tū
+                    </p>
+
+                    <div class="karakia-grid">
+                        <div>
+                            <p
+                                style="
+                                    font-family: &quot;Syne&quot;, sans-serif;
+                                    font-size: 0.7rem;
+                                    font-weight: 700;
+                                    letter-spacing: 0.1em;
+                                    text-transform: uppercase;
+                                    color: var(--muted);
+                                    margin-bottom: 0.75rem;
+                                "
+                            >
+                                Karakia
+                            </p>
+                            <p class="karakia-text">
+                                Whakataka te hau ki te uru,<br />
+                                Whakataka te hau ki te tonga.<br />
+                                Kia mākinakina ki uta,<br />
+                                Kia mātaratara ki tai.<br />
+                                E hī ake ana te atākura.<br />
+                                He tio, he huka, he hauhunga.<br />
+                                Tīhei mauri ora!
+                            </p>
+                        </div>
+                        <div class="karakia-meaning">
+                            <h3>Meaning</h3>
+                            <p>
+                                Cease the winds from the west, cease the winds
+                                from the south. Let the breeze blow over the
+                                land, let the breeze blow over the sea. Let the
+                                red dawn come with a sharpened air. A touch of
+                                frost, a touch of snow, a touch of dew. Behold,
+                                it is life!
+                            </p>
+                            <p
+                                style="
+                                    margin-top: 0.75rem;
+                                    font-size: 0.82rem;
+                                    color: var(--muted);
+                                "
+                            >
+                                This karakia asks the winds of negativity and
+                                stress to cease so we can come together with a
+                                calm, clear mind ready to learn.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="whakatuki-box">
+                        <div class="label">Whakataukī for today</div>
+                        <div class="quote">
+                            "Mā te huruhuru ka rere te manu"
+                        </div>
+                        <div class="translation">
+                            Adorn the bird with feathers so it can fly — the
+                            knowledge you gain today is one of those feathers.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEARNING INTENTIONS & SUCCESS CRITERIA -->
+            <div class="card" id="learning">
+                <div class="card-header">
+                    <span class="icon">🎯</span>
+                    <h2>Learning Intentions & Success Criteria</h2>
+                </div>
+                <div class="card-body">
+                    <div class="intentions-grid">
+                        <div class="intention-box green">
+                            <h3>
+                                By the end of this lesson, students will be able
+                                to:
+                            </h3>
+                            <ul>
+                                <li>
+                                    Identify key features of NZ notes and coins
+                                </li>
+                                <li>
+                                    Explain how security features prevent
+                                    counterfeiting
+                                </li>
+                                <li>
+                                    Apply the Look–Feel–Tilt method to detect
+                                    fake notes
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="intention-box gold">
+                            <h3>Success Criteria — "I can:"</h3>
+                            <ul>
+                                <li>
+                                    Describe at least three security features
+                                </li>
+                                <li>Explain why those features matter</li>
+                                <li>
+                                    Correctly identify an incorrect feature on a
+                                    note
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRIOR KNOWLEDGE DISCUSSION -->
+            <div class="card" id="prior">
+                <div class="card-header">
+                    <span class="icon">🙋</span>
+                    <h2>What Do You Already Know?</h2>
+                </div>
+                <div class="card-body">
+                    <p
+                        style="
+                            font-size: 0.88rem;
+                            color: var(--muted);
+                            margin-bottom: 1rem;
+                        "
+                    >
+                        Think about the NZ notes you've used — what do you
+                        actually know about them?
+                    </p>
+                    <div class="prior-grid">
+                        <div class="prior-item">
+                            "How many different NZ notes are there? What
+                            denominations do you know?"
+                        </div>
+                        <div class="prior-item">
+                            "What's on a $20 note — can you describe it without
+                            looking?"
+                        </div>
+                        <div class="prior-item">
+                            "Has anyone ever looked closely at a note and
+                            noticed something unusual about it?"
+                        </div>
+                        <div class="prior-item">
+                            "If someone handed you a fake $50, do you think
+                            you'd notice?"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DENOMINATION VISUAL -->
+            <div class="card" id="notes">
+                <div class="card-header">
+                    <span class="icon">💵</span>
+                    <h2>NZ Banknotes at a Glance</h2>
+                </div>
+                <div class="card-body">
+                    <p
+                        style="
+                            font-size: 0.85rem;
+                            color: var(--muted);
+                            margin-bottom: 1.25rem;
+                        "
+                    >
+                        Each denomination has a unique dominant colour, a
+                        notable New Zealander on the front, and a native bird on
+                        the back. Notes also increase in physical size with
+                        value making them easier to identify by touch.
+                    </p>
+
+                    <!-- SIZE COMPARISON -->
+                    <div class="size-comparison">
+                        <div class="size-comparison-label">
+                            Note sizes — Series 7 (actual proportions)
+                        </div>
+                        <div class="size-row" style="--denom-color: #d4600a">
+                            <div class="size-row-label">$5</div>
+                            <div class="size-bar-track">
+                                <div class="size-bar-fill" style="width: 87.1%">
+                                    <span class="size-bar-text"
+                                        >135 × 66 mm</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="size-row" style="--denom-color: #4a90d9">
+                            <div class="size-row-label">$10</div>
+                            <div class="size-bar-track">
+                                <div class="size-bar-fill" style="width: 90.3%">
+                                    <span class="size-bar-text"
+                                        >140 × 68 mm</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="size-row" style="--denom-color: #00a550">
+                            <div class="size-row-label">$20</div>
+                            <div class="size-bar-track">
+                                <div class="size-bar-fill" style="width: 93.5%">
+                                    <span class="size-bar-text"
+                                        >145 × 70 mm</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="size-row" style="--denom-color: #8e44ad">
+                            <div class="size-row-label">$50</div>
+                            <div class="size-bar-track">
+                                <div class="size-bar-fill" style="width: 96.8%">
+                                    <span class="size-bar-text"
+                                        >150 × 72 mm</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="size-row" style="--denom-color: #c0355a">
+                            <div class="size-row-label">$100</div>
+                            <div class="size-bar-track">
+                                <div class="size-bar-fill" style="width: 100%">
+                                    <span class="size-bar-text"
+                                        >155 × 74 mm</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DENOMINATION CARDS -->
+                    <div class="denom-grid">
+                        <div class="denom-card" style="--denom-color: #d4600a">
+                            <div class="denom-value">$5</div>
+                            <div class="denom-bird">🐧</div>
+                            <div class="denom-name">
+                                Hoiho<br /><span>Yellow-eyed Penguin</span>
+                            </div>
+                            <div class="denom-colour-label">Orange</div>
+                            <div class="denom-size">135 × 66 mm</div>
+                            <div class="denom-bio">
+                                Sir Edmund Hillary was the first person to
+                                summit Mt Everest (with Tenzing Norgay), 1953.
+                                NZ explorer and philanthropist.
+                            </div>
+                        </div>
+                        <div class="denom-card" style="--denom-color: #4a90d9">
+                            <div class="denom-value">$10</div>
+                            <div class="denom-bird">🦆</div>
+                            <div class="denom-name">
+                                Whio<br /><span>Blue Duck</span>
+                            </div>
+                            <div class="denom-colour-label">Blue</div>
+                            <div class="denom-size">140 × 68 mm</div>
+                            <div class="denom-bio">
+                                Kate Sheppard led NZ's women's suffrage
+                                movement. In 1893 NZ became the first country to
+                                grant women the right to vote.
+                            </div>
+                        </div>
+                        <div class="denom-card" style="--denom-color: #00a550">
+                            <div class="denom-value">$20</div>
+                            <div class="denom-bird">🦅</div>
+                            <div class="denom-name">
+                                Kārearea<br /><span>NZ Falcon</span>
+                            </div>
+                            <div class="denom-colour-label">Green</div>
+                            <div class="denom-size">145 × 70 mm</div>
+                            <div class="denom-bio">
+                                Queen Elizabeth II was the longest-reigning
+                                British monarch (1952–2022). Both the Queen
+                                Elizabeth II and King Charles III $20 notes are
+                                currently legal tender.
+                            </div>
+                        </div>
+                        <div class="denom-card" style="--denom-color: #8e44ad">
+                            <div class="denom-value">$50</div>
+                            <div class="denom-bird">🐦</div>
+                            <div class="denom-name">
+                                Kōkako<br /><span>Blue-wattled Crow</span>
+                            </div>
+                            <div class="denom-colour-label">Purple</div>
+                            <div class="denom-size">150 × 72 mm</div>
+                            <div class="denom-bio">
+                                Sir Āpirana Ngata was a prominent Māori leader,
+                                politician and scholar. He was the first Māori
+                                to graduate from a NZ university (1893).
+                            </div>
+                        </div>
+                        <div class="denom-card" style="--denom-color: #c0355a">
+                            <div class="denom-value">$100</div>
+                            <div class="denom-bird">🐤</div>
+                            <div class="denom-name">
+                                Mōhua<br /><span>Yellowhead</span>
+                            </div>
+                            <div class="denom-colour-label">Red</div>
+                            <div class="denom-size">155 × 74 mm</div>
+                            <div class="denom-bio">
+                                Lord Rutherford of Nelson won the Nobel Prize in
+                                Chemistry in 1908. He split the atom and founded
+                                nuclear physics, born in Brightwater, NZ.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOOK / INTRO -->
+            <div class="card" id="article">
+                <div class="card-header">
+                    <span class="icon">💬</span>
+                    <h2>Article & Discussion</h2>
+                </div>
+                <div class="card-body">
+                    <p
+                        style="
+                            font-size: 0.88rem;
+                            color: var(--muted);
+                            margin-bottom: 1rem;
+                        "
+                    >
+                        Read the article below, then we'll discuss these
+                        questions together as a class.
+                    </p>
+
+                    <div class="article-embed">
+                        <div class="article-masthead">
+                            <span class="article-source"
+                                >🚔 NZ Police — News Release</span
+                            >
+                            <a
+                                href="https://www.police.govt.nz/news/release/police-warn-fake-banknotes"
+                                target="_blank"
+                                class="article-link"
+                                >View original →</a
+                            >
+                        </div>
+                        <h3 class="article-headline">
+                            Police warn of fake banknotes
+                        </h3>
+                        <p class="article-byline">
+                            Sergeant Nigel Hurley, NZ Police
+                        </p>
+                        <div class="article-body">
+                            <p>
+                                Police are receiving reports of counterfeit $50
+                                and $100 banknotes and are urging the public to
+                                be vigilant when handling cash.
+                            </p>
+                            <p>
+                                Members of the public — especially those working
+                                in retail or hospitality — should increase their
+                                knowledge of how to spot a fake banknote to
+                                avoid getting duped at the till.
+                            </p>
+                            <p>
+                                The Reserve Bank of New Zealand recommends the
+                                <strong>look–feel–tilt</strong> test to
+                                distinguish the official security features of a
+                                legitimate banknote:
+                            </p>
+                            <ul class="article-list">
+                                <li>
+                                    <strong>Look</strong> — through the
+                                    holographic window. The edges should look
+                                    smooth, and you should see the bird's
+                                    silhouette, a map of New Zealand, and a 3-D
+                                    feature showing the value of the note.
+                                </li>
+                                <li>
+                                    <strong>Feel</strong> — run a finger across
+                                    the words "Reserve Bank of New Zealand Te
+                                    Pūtea Matua." You should be able to feel
+                                    raised ink on the denomination and the
+                                    letters at the top.
+                                </li>
+                                <li>
+                                    <strong>Tilt</strong> — a bright shining bar
+                                    should roll across the bird's silhouette on
+                                    the front, and the holographic window's
+                                    colours should shift and change, revealing
+                                    fine details.
+                                </li>
+                            </ul>
+                            <p class="article-note">
+                                Possession of forged banknotes can be punishable
+                                by up to <strong>7 years in prison</strong>, or
+                                up to <strong>10 years</strong> for knowingly
+                                using one.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p
+                        style="
+                            font-size: 0.85rem;
+                            font-weight: 600;
+                            margin: 1.25rem 0 0.6rem;
+                        "
+                    >
+                        Discussion questions
+                    </p>
+                    <div class="prompt-list">
+                        <div class="prompt-item">
+                            "Has anyone here — or anyone you know — ever handled
+                            a fake note?"
+                        </div>
+                        <div class="prompt-item">
+                            "Based on the article, how would you know if a note
+                            was fake?"
+                        </div>
+                        <div class="prompt-item">
+                            "Why do you think banks spend money designing
+                            security features?"
+                        </div>
+                        <div class="prompt-item">
+                            "What would happen to the economy if anyone could
+                            just print money?"
+                        </div>
+                        <div class="prompt-item">
+                            "The penalties are up to 10 years in prison — does
+                            that surprise you? Why so serious?"
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LFT OVERVIEW -->
+            <div class="card" id="lft">
+                <div class="card-header">
+                    <span class="icon">🔍</span>
+                    <h2>The Look–Feel–Tilt Method</h2>
+                </div>
+                <div class="card-body">
+                    <div class="lft-strip" style="margin-bottom: 1.5rem">
+                        <div class="lft-pill">
+                            <span class="big">👁️</span>
+                            <strong>Look</strong>
+                            <span>Visual checks</span>
+                        </div>
+                        <div class="lft-pill">
+                            <span class="big">🖐️</span>
+                            <strong>Feel</strong>
+                            <span>Texture & print</span>
+                        </div>
+                        <div class="lft-pill">
+                            <span class="big">🔄</span>
+                            <strong>Tilt</strong>
+                            <span>Movement effects</span>
+                        </div>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="emoji">👁️</span>
+                            <h3>Look</h3>
+                            <ul>
+                                <li>
+                                    Holographic transparent window — shapes
+                                    change when tilted (bird, NZ map,
+                                    denomination)
+                                </li>
+                                <li>Unique dominant colour per denomination</li>
+                                <li>
+                                    Puzzle number — front & back align when held
+                                    to light
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <span class="emoji">🖐️</span>
+                            <h3>Feel</h3>
+                            <ul>
+                                <li>
+                                    Raised (intaglio) ink on key text & numerals
+                                </li>
+                                <li>Smooth, strong polymer texture</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <span class="emoji">🔄</span>
+                            <h3>Tilt</h3>
+                            <ul>
+                                <li>
+                                    Rolling colour bar — changes colour or moves
+                                    when tilted
+                                </li>
+                                <li>
+                                    Hologram effects — shift to reveal fine
+                                    details
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <span class="emoji">🔬</span>
+                            <h3>Hidden</h3>
+                            <ul>
+                                <li>
+                                    Fluorescent (UV) elements visible under
+                                    ultraviolet light
+                                </li>
+                                <li>
+                                    Microtext — tiny text readable only under
+                                    magnification
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCENARIO / INVESTIGATION -->
+            <div class="card" id="investigation">
+                <div class="card-header">
+                    <span class="icon">🕵️</span>
+                    <h2>Investigation Activity</h2>
+                </div>
+                <div class="card-body">
+                    <div class="scenario-box" style="margin-bottom: 1.5rem">
+                        <h3>Mission Brief</h3>
+                        <p>
+                            The Reserve Bank of New Zealand has discovered fake
+                            notes in circulation. They've hired YOU as trainee
+                            investigators. Your job: examine the notes below,
+                            spot the incorrect features, and report back.
+                        </p>
+                    </div>
+
+                    <div class="invest-instructions">
+                        <div class="invest-step">
+                            <span class="invest-num">1</span
+                            ><span
+                                >Work in pairs. Use the
+                                <strong>Look–Feel–Tilt</strong> guide above to
+                                check each note.</span
+                            >
+                        </div>
+                        <div class="invest-step">
+                            <span class="invest-num">2</span
+                            ><span
+                                >Fill in the
+                                <strong>Note Investigator worksheet</strong> for
+                                each note — record what you find in each
+                                category.</span
+                            >
+                        </div>
+                        <div class="invest-step">
+                            <span class="invest-num">3</span
+                            ><span
+                                >For each note, decide:
+                                <strong>which feature is incorrect?</strong> Be
+                                ready to explain your reasoning.</span
+                            >
+                        </div>
+                    </div>
+
+                    <p
+                        style="
+                            font-family: &quot;Syne&quot;, sans-serif;
+                            font-size: 0.75rem;
+                            font-weight: 700;
+                            letter-spacing: 0.1em;
+                            text-transform: uppercase;
+                            color: var(--muted);
+                            margin: 1.5rem 0 0.75rem;
+                        "
+                    >
+                        Suspected Counterfeit Notes — Evidence Files
+                    </p>
+
+                    <div class="evidence-grid">
+                        <div class="evidence-card">
+                            <div class="evidence-label">
+                                Evidence A — $20 &amp; $10
+                            </div>
+                            <img
+                                src="note-fake-1.png"
+                                alt="Fake $20 and $10 notes"
+                            />
+                        </div>
+                        <div class="evidence-card">
+                            <div class="evidence-label">
+                                Evidence B — $5 &amp; $50
+                            </div>
+                            <img
+                                src="note-fake-2.png"
+                                alt="Fake $5 and $50 notes"
+                            />
+                        </div>
+                        <div class="evidence-card">
+                            <div class="evidence-label">Evidence C — $100</div>
+                            <img src="note-fake-3.png" alt="Fake $100 note" />
+                        </div>
+                    </div>
+
+                    <p
+                        style="
+                            font-family: &quot;Syne&quot;, sans-serif;
+                            font-size: 0.75rem;
+                            font-weight: 700;
+                            letter-spacing: 0.1em;
+                            text-transform: uppercase;
+                            color: var(--muted);
+                            margin: 1.5rem 0 0.75rem;
+                        "
+                    >
+                        Reference — Note Sizes &amp; Tactile Features
+                    </p>
+                    <div class="reference-img">
+                        <img
+                            src="note-size-reference.png"
+                            alt="RBNZ note size and Braille reference card"
+                        />
+                    </div>
+
+                    <p
+                        style="
+                            font-family: &quot;Syne&quot;, sans-serif;
+                            font-size: 0.75rem;
+                            font-weight: 700;
+                            letter-spacing: 0.1em;
+                            text-transform: uppercase;
+                            color: var(--muted);
+                            margin: 1.5rem 0 0.75rem;
+                        "
+                    >
+                        Student Worksheet
+                    </p>
+                    <div class="reference-img">
+                        <img
+                            src="worksheet-blank.png"
+                            alt="Note Investigator blank worksheet"
+                        />
+                    </div>
+
+                    <details class="answers-reveal">
+                        <summary>🔐 Teacher: Reveal answer sheet</summary>
+                        <div class="reference-img" style="margin-top: 1rem">
+                            <img
+                                src="worksheet-answers.png"
+                                alt="Note Investigator answer sheet"
+                            />
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- HISTORY TIMELINE -->
+            <div class="card" id="history">
+                <div class="card-header">
+                    <span class="icon">📅</span>
+                    <h2>A Brief History of NZ Currency</h2>
+                </div>
+                <div class="card-body">
+                    <div class="history-timeline">
+                        <div class="history-item">
+                            <div class="history-year">Pre-1840s</div>
+                            <div class="history-desc">
+                                Māori used
+                                <strong>barter, koha, and utu</strong> as forms
+                                of exchange — goods, gifts, and reciprocal
+                                obligation rather than money.
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1840s–1930s</div>
+                            <div class="history-desc">
+                                British pounds, shillings, and pence used after
+                                colonisation. A confusing system with 12 pence
+                                to a shilling and 20 shillings to a pound.
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1934</div>
+                            <div class="history-desc">
+                                The
+                                <strong>Reserve Bank of New Zealand</strong>
+                                established, taking over the role of issuing
+                                currency.
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1967</div>
+                            <div class="history-desc">
+                                NZ <strong>goes decimal</strong> — dollars and
+                                cents replace pounds and shillings. Much easier
+                                to calculate!
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1990</div>
+                            <div class="history-desc">
+                                NZ switches to
+                                <strong>polymer (plastic) notes</strong> —
+                                longer lasting, harder to counterfeit, and more
+                                secure than paper.
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">1990s–2006</div>
+                            <div class="history-desc">
+                                The <strong>1c, 2c, 5c coins retired</strong>.
+                                Prices rounded to the nearest 10 cents for cash
+                                transactions.
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">2015–16</div>
+                            <div class="history-desc">
+                                New series of notes issued with
+                                <strong>enhanced security features</strong> —
+                                improved holograms, colour-shift ink, and
+                                updated portraits.
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-year">Today</div>
+                            <div class="history-desc">
+                                Cash use is declining as
+                                <strong
+                                    >contactless payments, EFTPOS, and digital
+                                    banking</strong
+                                >
+                                become the norm — but cash remains legal tender
+                                and essential for many.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <div class="card" id="timeline">
+                <div class="card-header">
+                    <span class="icon">📋</span>
+                    <h2>Lesson Timeline</h2>
+                </div>
+                <div class="card-body">
+                    <div class="timeline">
+                        <div class="timeline-row">
+                            <div class="time-badge">0–5 min</div>
+                            <div class="timeline-content">
+                                <strong>Karakia, Intro & Expectations</strong>
+                                <p>
+                                    Open with karakia and whakataukī, introduce
+                                    yourself, set expectations and learning
+                                    intentions
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-row highlight">
+                            <div class="time-badge">5–8 min</div>
+                            <div class="timeline-content">
+                                <strong>★ Prior Knowledge Discussion</strong>
+                                <p>
+                                    Ask questions to find out what students
+                                    already know about NZ notes — don't teach
+                                    yet
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-row highlight">
+                            <div class="time-badge">8–20 min</div>
+                            <div class="timeline-content">
+                                <strong
+                                    >★ Presentation — NZ Notes & Security
+                                    Features</strong
+                                >
+                                <p>
+                                    Article hook, Look–Feel–Tilt method,
+                                    security features walkthrough, hands-on with
+                                    real notes
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="time-badge">20–40 min</div>
+                            <div class="timeline-content">
+                                <strong>Investigation Activity</strong>
+                                <p>
+                                    Groups examine "suspected counterfeit" notes
+                                    and identify errors using the worksheet
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="time-badge">40–50 min</div>
+                            <div class="timeline-content">
+                                <strong>Group Report Back</strong>
+                                <p>
+                                    Groups share findings and explain their
+                                    reasoning note by note
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="time-badge">50–58 min</div>
+                            <div class="timeline-content">
+                                <strong>Kahoot Quiz</strong>
+                                <p>
+                                    Consolidate learning in a fun, low-stakes
+                                    format
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="time-badge">58–60 min</div>
+                            <div class="timeline-content">
+                                <strong>Reflection & Exit Ticket</strong>
+                                <p>
+                                    Why do security features matter? Collect
+                                    worksheets as exit tickets
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p
+                        style="
+                            font-size: 0.8rem;
+                            color: var(--muted);
+                            margin-top: 1rem;
+                            padding-left: 0.25rem;
+                        "
+                    >
+                        <span
+                            style="
+                                display: inline-block;
+                                width: 10px;
+                                height: 10px;
+                                background: var(--green);
+                                border-radius: 2px;
+                                margin-right: 0.4rem;
+                                vertical-align: middle;
+                            "
+                        ></span>
+                        Highlighted rows mark the
+                        <strong>10–15 minute presentation</strong> (including
+                        prior knowledge discussion).
+                    </p>
+                </div>
+            </div>
+
+            <!-- EXTENSIONS -->
+            <div class="card" id="extensions">
+                <div class="card-header">
+                    <span class="icon">⭐</span>
+                    <h2>Extensions</h2>
+                </div>
+                <div class="card-body">
+                    <p
+                        style="
+                            font-size: 0.85rem;
+                            color: var(--muted);
+                            margin-bottom: 1.25rem;
+                        "
+                    >
+                        These can be run as brief mini-activities or posed as
+                        discussion questions depending on time available.
+                    </p>
+                    <div class="ext-grid-new">
+                        <div class="ext-box-new">
+                            <div class="ext-tag activity">Mini-activity</div>
+                            <h3>♿ Accessibility &amp; Equity</h3>
+                            <p>
+                                Give students a set of notes and ask them to
+                                sort by size without looking. Then discuss:
+                            </p>
+                            <ul>
+                                <li>Why are notes different sizes?</li>
+                                <li>
+                                    Why is raised (intaglio) print important?
+                                </li>
+                                <li>
+                                    How do these features support people who are
+                                    blind or have low vision?
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="ext-box-new">
+                            <div class="ext-tag discussion">Discussion</div>
+                            <h3>🪙 Coins</h3>
+                            <p>
+                                Extend the investigation to coins. Ask students:
+                            </p>
+                            <ul>
+                                <li>
+                                    What security features do NZ coins have?
+                                </li>
+                                <li>
+                                    How do coins differ from notes — why don't
+                                    we use the same methods?
+                                </li>
+                                <li>
+                                    Why do we still need coins if we have
+                                    digital payments?
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="ext-box-new">
+                            <div class="ext-tag activity">Mini-activity</div>
+                            <h3>🎮 Kahoot Quiz</h3>
+                            <p>
+                                Run the NZ Currency Kahoot to consolidate
+                                learning in a competitive, low-stakes format.
+                                Good for the last 10 minutes or as a full
+                                review.
+                            </p>
+                            <a
+                                href="https://create.kahoot.it/share/new-zealand-currency/777755cb-840f-4d5a-9816-f3c7552154fd"
+                                target="_blank"
+                                class="ext-link"
+                                >Open Kahoot →</a
+                            >
+                        </div>
+
+                        <div class="ext-box-new">
+                            <div class="ext-tag discussion">Discussion</div>
+                            <h3>🏭 Production &amp; Distribution</h3>
+                            <p>
+                                Pose these questions to spark broader thinking:
+                            </p>
+                            <ul>
+                                <li>
+                                    Where and how are NZ notes actually made?
+                                </li>
+                                <li>
+                                    How do notes get from the RBNZ to your
+                                    wallet?
+                                </li>
+                                <li>What happens to old or damaged notes?</li>
+                            </ul>
+                        </div>
+
+                        <div class="ext-box-new">
+                            <div class="ext-tag discussion">Discussion</div>
+                            <h3>👑 The $20 Note & King Charles III</h3>
+                            <p>
+                                Students may notice two versions of the $20 in
+                                circulation — both are legal tender. Use this as
+                                a discussion prompt:
+                            </p>
+                            <ul>
+                                <li>
+                                    Why does the $20 still show Queen Elizabeth
+                                    II?
+                                </li>
+                                <li>
+                                    When will King Charles III appear on NZ
+                                    currency?
+                                </li>
+                                <li>
+                                    Who else appears on NZ notes — and how are
+                                    they chosen?
+                                </li>
+                            </ul>
+                            <p
+                                style="
+                                    margin-top: 0.5rem;
+                                    font-size: 0.78rem;
+                                    color: var(--muted);
+                                "
+                            >
+                                Context: The RBNZ will use existing $20 stock
+                                before introducing a King Charles III note —
+                                likely several more years away. The new 10 cent
+                                coin (featuring the King) is expected in
+                                circulation around 2027.
+                            </p>
+                        </div>
+
+                        <div class="ext-box-new">
+                            <div class="ext-tag discussion">Discussion</div>
+                            <h3>📱 Digitalising Currency</h3>
+                            <p>
+                                A bigger-picture conversation for curious
+                                students:
+                            </p>
+                            <ul>
+                                <li>
+                                    What is a Central Bank Digital Currency
+                                    (CBDC)?
+                                </li>
+                                <li>Is NZ considering a digital dollar?</li>
+                                <li>
+                                    What would be lost — or gained — if cash
+                                    disappeared?
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESOURCES -->
+            <div class="card" id="resources">
+                <div class="card-header">
+                    <span class="icon">🔗</span>
+                    <h2>Resources</h2>
+                </div>
+                <div class="card-body">
+                    <div class="resource-list">
+                        <a
+                            class="resource-link"
+                            href="https://www.rbnz.govt.nz/money-and-cash/banknotes-and-coins/how-to-spot-a-fake-banknote-or-coin"
+                            target="_blank"
+                        >
+                            <span class="link-icon">🏦</span>
+                            RBNZ — How to spot a fake banknote or coin
+                        </a>
+                        <a
+                            class="resource-link"
+                            href="https://www.rbnz.govt.nz/-/media/project/sites/rbnz/files/publications/factsheets-and-guides/factsheet-security-features-of-new-zealand-banknotes.pdf"
+                            target="_blank"
+                        >
+                            <span class="link-icon">📄</span>
+                            RBNZ — Security features of NZ banknotes (PDF)
+                        </a>
+                        <a
+                            class="resource-link"
+                            href="https://www.rbnz.govt.nz/money-and-cash/banknotes-and-coins/banknotes-in-circulation/explore-banknote-features"
+                            target="_blank"
+                        >
+                            <span class="link-icon">🔎</span>
+                            RBNZ — Explore banknote features (interactive)
+                        </a>
+                        <a
+                            class="resource-link"
+                            href="https://create.kahoot.it/share/new-zealand-currency/777755cb-840f-4d5a-9816-f3c7552154fd"
+                            target="_blank"
+                        >
+                            <span class="link-icon">🎮</span>
+                            Kahoot — New Zealand Currency Quiz
+                        </a>
+                        <a
+                            class="resource-link"
+                            href="https://www.police.govt.nz/news/release/police-warn-fake-banknotes"
+                            target="_blank"
+                        >
+                            <span class="link-icon">🚔</span>
+                            NZ Police — Warning about fake banknotes
+                        </a>
+                        <a
+                            class="resource-link"
+                            href="https://www.rbnz.govt.nz/money-and-cash/banknotes-and-coins/coins-in-circulation/king-charles-iii-coins"
+                            target="_blank"
+                        >
+                            <span class="link-icon">👑</span>
+                            RBNZ — King Charles III coins (transition timeline)
+                        </a>
+                        <a
+                            class="resource-link"
+                            href="https://en.wikipedia.org/wiki/Banknotes_of_the_New_Zealand_dollar"
+                            target="_blank"
+                        >
+                            <span class="link-icon">📖</span>
+                            Wikipedia — Banknotes of the New Zealand dollar
+                            (denomination & security feature reference)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- LIGHTBOX -->
+        <div
+            class="lightbox-overlay"
+            id="lightbox"
+            role="dialog"
+            aria-modal="true"
+        >
+            <button
+                class="lightbox-close"
+                id="lightbox-close"
+                aria-label="Close"
+            >
+                &times;
+            </button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+            <div class="lightbox-caption" id="lightbox-caption"></div>
         </div>
-        <div class="intention-box gold">
-          <h3>Success Criteria — "I can…"</h3>
-          <ul>
-            <li>Describe at least three security features</li>
-            <li>Explain why those features matter</li>
-            <li>Correctly identify an incorrect feature on a note</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- HOOK / INTRO -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">💬</span>
-      <h2>Hook Discussion (0–5 min)</h2>
-    </div>
-    <div class="card-body">
-      <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">Read the article below with students, then use the questions to open a discussion.</p>
+        <script>
+            const overlay = document.getElementById("lightbox");
+            const lbImg = document.getElementById("lightbox-img");
+            const lbCap = document.getElementById("lightbox-caption");
+            const lbClose = document.getElementById("lightbox-close");
 
-      <div class="article-embed">
-        <div class="article-masthead">
-          <span class="article-source">🚔 NZ Police — News Release</span>
-          <a href="https://www.police.govt.nz/news/release/police-warn-fake-banknotes" target="_blank" class="article-link">View original →</a>
-        </div>
-        <h3 class="article-headline">Police warn of fake banknotes</h3>
-        <p class="article-byline">Sergeant Nigel Hurley, NZ Police</p>
-        <div class="article-body">
-          <p>Police are receiving reports of counterfeit $50 and $100 banknotes and are urging the public to be vigilant when handling cash.</p>
-          <p>Members of the public — especially those working in retail or hospitality — should increase their knowledge of how to spot a fake banknote to avoid getting duped at the till.</p>
-          <p>The Reserve Bank of New Zealand recommends the <strong>look–feel–tilt</strong> test to distinguish the official security features of a legitimate banknote:</p>
-          <ul class="article-list">
-            <li><strong>Look</strong> — through the holographic window. The edges should look smooth, and you should see the bird's silhouette, a map of New Zealand, and a 3-D feature showing the value of the note.</li>
-            <li><strong>Feel</strong> — run a finger across the words "Reserve Bank of New Zealand Te Pūtea Matua." You should be able to feel raised ink on the denomination and the letters at the top.</li>
-            <li><strong>Tilt</strong> — a bright shining bar should roll across the bird's silhouette on the front, and the holographic window's colours should shift and change, revealing fine details.</li>
-          </ul>
-          <p class="article-note">Possession of forged banknotes can be punishable by up to <strong>7 years in prison</strong>, or up to <strong>10 years</strong> for knowingly using one.</p>
-        </div>
-      </div>
+            document.querySelectorAll(".evidence-card img").forEach((img) => {
+                img.addEventListener("click", () => {
+                    lbImg.src = img.src;
+                    lbImg.alt = img.alt;
+                    lbCap.textContent = img
+                        .closest(".evidence-card")
+                        .querySelector(".evidence-label").textContent;
+                    overlay.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                });
+            });
 
-      <p style="font-size:0.85rem; font-weight:600; margin: 1.25rem 0 0.6rem;">Discussion questions</p>
-      <div class="prompt-list">
-        <div class="prompt-item">"Has anyone here — or anyone you know — ever handled a fake note?"</div>
-        <div class="prompt-item">"Based on the article, how would you know if a note was fake?"</div>
-        <div class="prompt-item">"Why do you think banks spend money designing security features?"</div>
-        <div class="prompt-item">"What would happen to the economy if anyone could just print money?"</div>
-        <div class="prompt-item">"The penalties are up to 10 years in prison — does that surprise you? Why so serious?"</div>
-      </div>
-    </div>
-  </div>
+            function closeLightbox() {
+                overlay.classList.remove("active");
+                lbImg.src = "";
+                document.body.style.overflow = "";
+            }
 
-  <!-- LFT OVERVIEW -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">🔍</span>
-      <h2>The Look–Feel–Tilt Method</h2>
-    </div>
-    <div class="card-body">
-      <div class="lft-strip" style="margin-bottom:1.5rem;">
-        <div class="lft-pill">
-          <span class="big">👁️</span>
-          <strong>Look</strong>
-          <span>Visual checks</span>
-        </div>
-        <div class="lft-pill">
-          <span class="big">🖐️</span>
-          <strong>Feel</strong>
-          <span>Texture & print</span>
-        </div>
-        <div class="lft-pill">
-          <span class="big">🔄</span>
-          <strong>Tilt</strong>
-          <span>Movement effects</span>
-        </div>
-      </div>
+            lbClose.addEventListener("click", closeLightbox);
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <span class="emoji">👁️</span>
-          <h3>Look</h3>
-          <ul>
-            <li>Holographic transparent window — shapes change when tilted (bird, NZ map, denomination)</li>
-            <li>Unique dominant colour per denomination</li>
-            <li>Puzzle number — front & back align when held to light</li>
-          </ul>
-        </div>
-        <div class="feature-card">
-          <span class="emoji">🖐️</span>
-          <h3>Feel</h3>
-          <ul>
-            <li>Raised (intaglio) ink on key text & numerals</li>
-            <li>Smooth, strong polymer texture</li>
-          </ul>
-        </div>
-        <div class="feature-card">
-          <span class="emoji">🔄</span>
-          <h3>Tilt</h3>
-          <ul>
-            <li>Rolling colour bar — changes colour or moves when tilted</li>
-            <li>Hologram effects — shift to reveal fine details</li>
-          </ul>
-        </div>
-        <div class="feature-card">
-          <span class="emoji">🔬</span>
-          <h3>Hidden</h3>
-          <ul>
-            <li>Fluorescent (UV) elements visible under ultraviolet light</li>
-            <li>Microtext — tiny text readable only under magnification</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+            overlay.addEventListener("click", (e) => {
+                if (e.target === overlay) closeLightbox();
+            });
 
-  <!-- SCENARIO / INVESTIGATION -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">🕵️</span>
-      <h2>Investigation Activity (15–35 min)</h2>
-    </div>
-    <div class="card-body">
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeLightbox();
+            });
 
-      <div class="scenario-box" style="margin-bottom:1.5rem;">
-        <h3>Mission Brief</h3>
-        <p>The Reserve Bank of New Zealand has discovered fake notes in circulation. They've hired YOU as trainee investigators. Your job: examine the notes below, spot the incorrect features, and report back.</p>
-      </div>
+            // FLOATING TOC — highlight active section
+            const tocLinks = document.querySelectorAll(".toc-link");
+            const sections = Array.from(tocLinks)
+                .map((l) => document.querySelector(l.getAttribute("href")))
+                .filter(Boolean);
 
-      <div class="invest-instructions">
-        <div class="invest-step"><span class="invest-num">1</span><span>Work in pairs. Use the <strong>Look–Feel–Tilt</strong> guide above to check each note.</span></div>
-        <div class="invest-step"><span class="invest-num">2</span><span>Fill in the <strong>Note Investigator worksheet</strong> for each note — record what you find in each category.</span></div>
-        <div class="invest-step"><span class="invest-num">3</span><span>For each note, decide: <strong>which feature is incorrect?</strong> Be ready to explain your reasoning.</span></div>
-      </div>
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            tocLinks.forEach((l) =>
+                                l.classList.remove("active"),
+                            );
+                            const active = document.querySelector(
+                                `.toc-link[href="#${entry.target.id}"]`,
+                            );
+                            if (active) active.classList.add("active");
+                        }
+                    });
+                },
+                { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
+            );
 
-      <p style="font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin: 1.5rem 0 0.75rem;">Suspected Counterfeit Notes — Evidence Files</p>
+            sections.forEach((s) => observer.observe(s));
+        </script>
 
-      <div class="evidence-grid">
-        <div class="evidence-card">
-          <div class="evidence-label">Evidence A — $20 &amp; $10</div>
-          <img src="note-fake-1.png" alt="Fake $20 and $10 notes" />
-        </div>
-        <div class="evidence-card">
-          <div class="evidence-label">Evidence B — $5 &amp; $50</div>
-          <img src="note-fake-2.png" alt="Fake $5 and $50 notes" />
-        </div>
-        <div class="evidence-card">
-          <div class="evidence-label">Evidence C — $100</div>
-          <img src="note-fake-3.png" alt="Fake $100 note" />
-        </div>
-      </div>
-
-      <p style="font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin: 1.5rem 0 0.75rem;">Reference — Note Sizes &amp; Tactile Features</p>
-      <div class="reference-img">
-        <img src="note-size-reference.png" alt="RBNZ note size and Braille reference card" />
-      </div>
-
-      <p style="font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin: 1.5rem 0 0.75rem;">Student Worksheet</p>
-      <div class="reference-img">
-        <img src="worksheet-blank.png" alt="Note Investigator blank worksheet" />
-      </div>
-
-      <details class="answers-reveal">
-        <summary>🔐 Teacher: Reveal answer sheet</summary>
-        <div class="reference-img" style="margin-top:1rem;">
-          <img src="worksheet-answers.png" alt="Note Investigator answer sheet" />
-        </div>
-      </details>
-
-    </div>
-  </div>
-
-  <!-- TIMELINE -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">📋</span>
-      <h2>Lesson Timeline</h2>
-    </div>
-    <div class="card-body">
-      <div class="timeline">
-        <div class="timeline-row">
-          <div class="time-badge">0–5 min</div>
-          <div class="timeline-content">
-            <strong>Hook Discussion</strong>
-            <p>Activate prior knowledge about NZ money and fake notes</p>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="time-badge">5–15 min</div>
-          <div class="timeline-content">
-            <strong>Presentation</strong>
-            <p>Teach Look–Feel–Tilt security features using examples and visuals</p>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="time-badge">15–35 min</div>
-          <div class="timeline-content">
-            <strong>Investigation Activity</strong>
-            <p>Pairs examine "suspected counterfeit" notes and identify errors</p>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="time-badge">35–45 min</div>
-          <div class="timeline-content">
-            <strong>Group Report Back</strong>
-            <p>Pairs share findings and explain which feature was incorrect</p>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="time-badge">45–55 min</div>
-          <div class="timeline-content">
-            <strong>Kahoot Quiz</strong>
-            <p>Review key concepts and reinforce learning</p>
-          </div>
-        </div>
-        <div class="timeline-row">
-          <div class="time-badge">55–60 min</div>
-          <div class="timeline-content">
-            <strong>Reflection & Exit Question</strong>
-            <p>Why do security features matter? What could happen without them?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DENOMINATION VISUAL -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">💵</span>
-      <h2>NZ Banknotes at a Glance</h2>
-    </div>
-    <div class="card-body">
-      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Each denomination has a unique dominant colour and features a native New Zealand bird.</p>
-      <div class="denom-grid">
-        <div class="denom-card" style="--denom-color:#d4600a;">
-          <div class="denom-value">$5</div>
-          <div class="denom-bird">🐧</div>
-          <div class="denom-name">Hoiho<br><span>Yellow-eyed Penguin</span></div>
-          <div class="denom-person">Sir Edmund Hillary</div>
-          <div class="denom-colour-label">Orange</div>
-        </div>
-        <div class="denom-card" style="--denom-color:#4a90d9;">
-          <div class="denom-value">$10</div>
-          <div class="denom-bird">🦆</div>
-          <div class="denom-name">Whio<br><span>Blue Duck</span></div>
-          <div class="denom-person">Kate Sheppard</div>
-          <div class="denom-colour-label">Blue</div>
-        </div>
-        <div class="denom-card" style="--denom-color:#00a550;">
-          <div class="denom-value">$20</div>
-          <div class="denom-bird">🦅</div>
-          <div class="denom-name">Kārearea<br><span>NZ Falcon</span></div>
-          <div class="denom-person">Queen Elizabeth II</div>
-          <div class="denom-colour-label">Green</div>
-        </div>
-        <div class="denom-card" style="--denom-color:#c9922a;">
-          <div class="denom-value">$50</div>
-          <div class="denom-bird">🐦</div>
-          <div class="denom-name">Kōkako<br><span>Blue-wattled Crow</span></div>
-          <div class="denom-person">Sir Apirana Ngata</div>
-          <div class="denom-colour-label">Gold / Orange</div>
-        </div>
-        <div class="denom-card" style="--denom-color:#c0355a;">
-          <div class="denom-value">$100</div>
-          <div class="denom-bird">🐤</div>
-          <div class="denom-name">Mōhua<br><span>Yellowhead</span></div>
-          <div class="denom-person">Lord Rutherford</div>
-          <div class="denom-colour-label">Pink / Red</div>
-        </div>
-      </div>
-      <p style="font-size:0.8rem;color:var(--muted);margin-top:0.75rem;">💡 <em>Notes are also different sizes — larger denominations are physically longer, helping people identify them by touch.</em></p>
-    </div>
-  </div>
-
-  <!-- HISTORY TIMELINE -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">📅</span>
-      <h2>A Brief History of NZ Currency</h2>
-    </div>
-    <div class="card-body">
-      <div class="history-timeline">
-        <div class="history-item">
-          <div class="history-year">Pre-1840s</div>
-          <div class="history-desc">Māori used <strong>barter, koha, and utu</strong> as forms of exchange — goods, gifts, and reciprocal obligation rather than money.</div>
-        </div>
-        <div class="history-item">
-          <div class="history-year">1840s–1930s</div>
-          <div class="history-desc">British pounds, shillings, and pence used after colonisation. A confusing system with 12 pence to a shilling and 20 shillings to a pound.</div>
-        </div>
-        <div class="history-item">
-          <div class="history-year">1934</div>
-          <div class="history-desc">The <strong>Reserve Bank of New Zealand</strong> established, taking over the role of issuing currency.</div>
-        </div>
-        <div class="history-item">
-          <div class="history-year">1967</div>
-          <div class="history-desc">NZ <strong>goes decimal</strong> — dollars and cents replace pounds and shillings. Much easier to calculate!</div>
-        </div>
-        <div class="history-item">
-          <div class="history-year">1990</div>
-          <div class="history-desc">NZ switches to <strong>polymer (plastic) notes</strong> — longer lasting, harder to counterfeit, and more secure than paper.</div>
-        </div>
-        <div class="history-item">
-          <div class="history-year">1990s–2006</div>
-          <div class="history-desc">The <strong>1c, 2c, 5c coins retired</strong>. Prices rounded to the nearest 10 cents for cash transactions.</div>
-        </div>
-        <div class="history-item">
-          <div class="history-year">2015–16</div>
-          <div class="history-desc">New series of notes issued with <strong>enhanced security features</strong> — improved holograms, colour-shift ink, and updated portraits.</div>
-        </div>
-        <div class="history-item">
-          <div class="history-year">Today</div>
-          <div class="history-desc">Cash use is declining as <strong>contactless payments, EFTPOS, and digital banking</strong> become the norm — but cash remains legal tender and essential for many.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- EXTENSIONS -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">⭐</span>
-      <h2>Extensions — If Time Allows</h2>
-    </div>
-    <div class="card-body">
-      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">These can be run as brief mini-activities or posed as discussion questions depending on time available.</p>
-      <div class="ext-grid-new">
-
-        <div class="ext-box-new">
-          <div class="ext-tag activity">Mini-activity</div>
-          <h3>♿ Accessibility &amp; Equity</h3>
-          <p>Give students a set of notes and ask them to sort by size without looking. Then discuss:</p>
-          <ul>
-            <li>Why are notes different sizes?</li>
-            <li>Why is raised (intaglio) print important?</li>
-            <li>How do these features support people who are blind or have low vision?</li>
-          </ul>
-        </div>
-
-        <div class="ext-box-new">
-          <div class="ext-tag discussion">Discussion</div>
-          <h3>🪙 Coins</h3>
-          <p>Extend the investigation to coins. Ask students:</p>
-          <ul>
-            <li>What security features do NZ coins have?</li>
-            <li>How do coins differ from notes — why don't we use the same methods?</li>
-            <li>Why do we still need coins if we have digital payments?</li>
-          </ul>
-        </div>
-
-        <div class="ext-box-new">
-          <div class="ext-tag activity">Mini-activity</div>
-          <h3>🎮 Kahoot Quiz</h3>
-          <p>Run the NZ Currency Kahoot to consolidate learning in a competitive, low-stakes format. Good for the last 10 minutes or as a full review.</p>
-          <a href="https://create.kahoot.it/share/new-zealand-currency/777755cb-840f-4d5a-9816-f3c7552154fd" target="_blank" class="ext-link">Open Kahoot →</a>
-        </div>
-
-        <div class="ext-box-new">
-          <div class="ext-tag discussion">Discussion</div>
-          <h3>🏭 Production &amp; Distribution</h3>
-          <p>Pose these questions to spark broader thinking:</p>
-          <ul>
-            <li>Where and how are NZ notes actually made?</li>
-            <li>How do notes get from the RBNZ to your wallet?</li>
-            <li>What happens to old or damaged notes?</li>
-          </ul>
-        </div>
-
-        <div class="ext-box-new">
-          <div class="ext-tag discussion">Discussion</div>
-          <h3>👑 The $20 Note & King Charles III</h3>
-          <p>Students may notice two versions of the $20 in circulation — both are legal tender. Use this as a discussion prompt:</p>
-          <ul>
-            <li>Why does the $20 still show Queen Elizabeth II?</li>
-            <li>When will King Charles III appear on NZ currency?</li>
-            <li>Who else appears on NZ notes — and how are they chosen?</li>
-          </ul>
-          <p style="margin-top:0.5rem; font-size:0.78rem; color:var(--muted);">Context: The RBNZ will use existing $20 stock before introducing a King Charles III note — likely several more years away. The new 10 cent coin (featuring the King) is expected in circulation around 2027.</p>
-        </div>
-
-        <div class="ext-box-new">
-          <div class="ext-tag discussion">Discussion</div>
-          <h3>📱 Digitalising Currency</h3>
-          <p>A bigger-picture conversation for curious students:</p>
-          <ul>
-            <li>What is a Central Bank Digital Currency (CBDC)?</li>
-            <li>Is NZ considering a digital dollar?</li>
-            <li>What would be lost — or gained — if cash disappeared?</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- RESOURCES -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">🔗</span>
-      <h2>Resources</h2>
-    </div>
-    <div class="card-body">
-      <div class="resource-list">
-        <a class="resource-link" href="https://www.rbnz.govt.nz/money-and-cash/banknotes-and-coins/how-to-spot-a-fake-banknote-or-coin" target="_blank">
-          <span class="link-icon">🏦</span>
-          RBNZ — How to spot a fake banknote or coin
-        </a>
-        <a class="resource-link" href="https://www.rbnz.govt.nz/-/media/project/sites/rbnz/files/publications/factsheets-and-guides/factsheet-security-features-of-new-zealand-banknotes.pdf" target="_blank">
-          <span class="link-icon">📄</span>
-          RBNZ — Security features of NZ banknotes (PDF)
-        </a>
-        <a class="resource-link" href="https://www.rbnz.govt.nz/money-and-cash/banknotes-and-coins/banknotes-in-circulation/explore-banknote-features" target="_blank">
-          <span class="link-icon">🔎</span>
-          RBNZ — Explore banknote features (interactive)
-        </a>
-        <a class="resource-link" href="https://create.kahoot.it/share/new-zealand-currency/777755cb-840f-4d5a-9816-f3c7552154fd" target="_blank">
-          <span class="link-icon">🎮</span>
-          Kahoot — New Zealand Currency Quiz
-        </a>
-        <a class="resource-link" href="https://www.police.govt.nz/news/release/police-warn-fake-banknotes" target="_blank">
-          <span class="link-icon">🚔</span>
-          NZ Police — Warning about fake banknotes
-        </a>
-        <a class="resource-link" href="https://www.rbnz.govt.nz/money-and-cash/banknotes-and-coins/coins-in-circulation/king-charles-iii-coins" target="_blank">
-          <span class="link-icon">👑</span>
-          RBNZ — King Charles III coins (transition timeline)
-        </a>
-        <a class="resource-link" href="https://en.wikipedia.org/wiki/Banknotes_of_the_New_Zealand_dollar" target="_blank">
-          <span class="link-icon">📖</span>
-          Wikipedia — Banknotes of the New Zealand dollar (denomination & security feature reference)
-        </a>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<footer>
-  Year 9 Financial Literacy &nbsp;·&nbsp; NZ Notes &amp; Coins — Security Features &nbsp;·&nbsp; 60-minute lesson
-</footer>
-
-</body>
+        <footer>
+            Year 9 Financial Literacy &nbsp;·&nbsp; NZ Notes &amp; Coins —
+            Security Features &nbsp;·&nbsp; 60-minute lesson
+        </footer>
+    </body>
 </html>
